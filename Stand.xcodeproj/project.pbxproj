@@ -1,0 +1,485 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5E0677BD2D3D4DFD00D04ACA /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 5E0677BC2D3D4DFD00D04ACA /* LaunchAtLogin */; };
+		5E2FAFE82D5F9120007DA20C /* DynamicNotchKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5E2FAFE72D5F9120007DA20C /* DynamicNotchKit */; };
+		5E2FB0132D5F96C0007DA20C /* DynamicNotchKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5E2FB0122D5F96C0007DA20C /* DynamicNotchKit */; };
+		5E2FB0162D5F9A82007DA20C /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = 5E2FB0152D5F9A82007DA20C /* MarkdownUI */; };
+		5EB03C312D5A440400783251 /* Luminare in Frameworks */ = {isa = PBXBuildFile; productRef = 5EB03C302D5A440400783251 /* Luminare */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		5E3EDEB02D089F7000E83C77 /* Stand.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stand.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5EA878D42D3EB5EE000C2B96 /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
+		5EA878E82D3EB64C000C2B96 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		5EA878EA2D3EB64C000C2B96 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		5EB03C322D5A48F300783251 /* Exceptions for "Stand" folder in "SitStandTimer" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 5E3EDEAF2D089F7000E83C77 /* SitStandTimer */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		5E3EDEB22D089F7000E83C77 /* Stand */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				5EB03C322D5A48F300783251 /* Exceptions for "Stand" folder in "SitStandTimer" target */,
+			);
+			path = Stand;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5E3EDEAD2D089F7000E83C77 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5E2FB0132D5F96C0007DA20C /* DynamicNotchKit in Frameworks */,
+				5E2FAFE82D5F9120007DA20C /* DynamicNotchKit in Frameworks */,
+				5E0677BD2D3D4DFD00D04ACA /* LaunchAtLogin in Frameworks */,
+				5EB03C312D5A440400783251 /* Luminare in Frameworks */,
+				5E2FB0162D5F9A82007DA20C /* MarkdownUI in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5E3EDEA72D089F7000E83C77 = {
+			isa = PBXGroup;
+			children = (
+				5E3EDEB22D089F7000E83C77 /* Stand */,
+				5EA878D32D3EB5EE000C2B96 /* Frameworks */,
+				5E3EDEB12D089F7000E83C77 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5E3EDEB12D089F7000E83C77 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5E3EDEB02D089F7000E83C77 /* Stand.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5EA878D32D3EB5EE000C2B96 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5EA878D42D3EB5EE000C2B96 /* Intents.framework */,
+				5EA878E82D3EB64C000C2B96 /* WidgetKit.framework */,
+				5EA878EA2D3EB64C000C2B96 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5E3EDEAF2D089F7000E83C77 /* SitStandTimer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5E3EDED52D089F7100E83C77 /* Build configuration list for PBXNativeTarget "SitStandTimer" */;
+			buildPhases = (
+				5E3EDEAC2D089F7000E83C77 /* Sources */,
+				5E3EDEAD2D089F7000E83C77 /* Frameworks */,
+				5E3EDEAE2D089F7000E83C77 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				5E3EDEB22D089F7000E83C77 /* Stand */,
+			);
+			name = SitStandTimer;
+			packageProductDependencies = (
+				5E0677BC2D3D4DFD00D04ACA /* LaunchAtLogin */,
+				5EB03C302D5A440400783251 /* Luminare */,
+				5E2FAFE72D5F9120007DA20C /* DynamicNotchKit */,
+				5E2FB0122D5F96C0007DA20C /* DynamicNotchKit */,
+				5E2FB0152D5F9A82007DA20C /* MarkdownUI */,
+			);
+			productName = SitStandTimer;
+			productReference = 5E3EDEB02D089F7000E83C77 /* Stand.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5E3EDEA82D089F7000E83C77 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1620;
+				LastUpgradeCheck = 1620;
+				TargetAttributes = {
+					5E3EDEAF2D089F7000E83C77 = {
+						CreatedOnToolsVersion = 16.1;
+					};
+				};
+			};
+			buildConfigurationList = 5E3EDEAB2D089F7000E83C77 /* Build configuration list for PBXProject "Stand" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				fr,
+				es,
+				"zh-Hans",
+				de,
+			);
+			mainGroup = 5E3EDEA72D089F7000E83C77;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				5E0677BB2D3D4DFD00D04ACA /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */,
+				5EB03C2F2D5A440400783251 /* XCRemoteSwiftPackageReference "Luminare-Safe" */,
+				5E2FB0112D5F96C0007DA20C /* XCRemoteSwiftPackageReference "DynamicNotchKit" */,
+				5E2FB0142D5F9A82007DA20C /* XCRemoteSwiftPackageReference "swift-markdown-ui" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 5E3EDEB12D089F7000E83C77 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5E3EDEAF2D089F7000E83C77 /* SitStandTimer */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5E3EDEAE2D089F7000E83C77 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5E3EDEAC2D089F7000E83C77 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		5E3EDED32D089F7100E83C77 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_NSMainNibFile = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = "";
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5E3EDED42D089F7100E83C77 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_NSMainNibFile = "";
+				INFOPLIST_KEY_NSMainStoryboardFile = "";
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Release;
+		};
+		5E3EDED62D089F7100E83C77 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "Stand-26";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CODE_SIGN_ENTITLEMENTS = Stand/Stand.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Developer ID Application";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 36;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = 9XCKWAKCP6;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Stand/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Stand;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSHumanReadableCopyright = ash;
+				INFOPLIST_KEY_NSMainNibFile = MainMenu.xib;
+				INFOPLIST_KEY_NSMainStoryboardFile = MainMenu.xib;
+				INFOPLIST_KEY_UIMainStoryboardFile = MainMenu.xib;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 26.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.asboy2035.Stand.26;
+				PRODUCT_NAME = Stand;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				VERSION_INFO_SUFFIX = Beta;
+			};
+			name = Debug;
+		};
+		5E3EDED72D089F7100E83C77 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "Stand-26";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CODE_SIGN_ENTITLEMENTS = Stand/Stand.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Developer ID Application";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 36;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=macosx*]" = 9XCKWAKCP6;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Stand/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Stand;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSHumanReadableCopyright = ash;
+				INFOPLIST_KEY_NSMainNibFile = MainMenu.xib;
+				INFOPLIST_KEY_NSMainStoryboardFile = MainMenu.xib;
+				INFOPLIST_KEY_UIMainStoryboardFile = MainMenu.xib;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 26.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.asboy2035.Stand.26;
+				PRODUCT_NAME = Stand;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				VERSION_INFO_SUFFIX = Beta;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5E3EDEAB2D089F7000E83C77 /* Build configuration list for PBXProject "Stand" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5E3EDED32D089F7100E83C77 /* Debug */,
+				5E3EDED42D089F7100E83C77 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5E3EDED52D089F7100E83C77 /* Build configuration list for PBXNativeTarget "SitStandTimer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5E3EDED62D089F7100E83C77 /* Debug */,
+				5E3EDED72D089F7100E83C77 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5E0677BB2D3D4DFD00D04ACA /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/LaunchAtLogin-Modern";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		5E2FB0112D5F96C0007DA20C /* XCRemoteSwiftPackageReference "DynamicNotchKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MrKai77/DynamicNotchKit";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		5E2FB0142D5F9A82007DA20C /* XCRemoteSwiftPackageReference "swift-markdown-ui" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/gonzalezreal/swift-markdown-ui";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.4.1;
+			};
+		};
+		5EB03C2F2D5A440400783251 /* XCRemoteSwiftPackageReference "Luminare-Safe" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/asboy2035/Luminare-Safe";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5E0677BC2D3D4DFD00D04ACA /* LaunchAtLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5E0677BB2D3D4DFD00D04ACA /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */;
+			productName = LaunchAtLogin;
+		};
+		5E2FAFE72D5F9120007DA20C /* DynamicNotchKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DynamicNotchKit;
+		};
+		5E2FB0122D5F96C0007DA20C /* DynamicNotchKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5E2FB0112D5F96C0007DA20C /* XCRemoteSwiftPackageReference "DynamicNotchKit" */;
+			productName = DynamicNotchKit;
+		};
+		5E2FB0152D5F9A82007DA20C /* MarkdownUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5E2FB0142D5F9A82007DA20C /* XCRemoteSwiftPackageReference "swift-markdown-ui" */;
+			productName = MarkdownUI;
+		};
+		5EB03C302D5A440400783251 /* Luminare */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5EB03C2F2D5A440400783251 /* XCRemoteSwiftPackageReference "Luminare-Safe" */;
+			productName = Luminare;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 5E3EDEA82D089F7000E83C77 /* Project object */;
+}
