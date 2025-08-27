@@ -6,11 +6,9 @@
 //
 
 import SwiftUI
-import DynamicNotchKit
-import Luminare
 
 struct ContentView: View {
-    @EnvironmentObject private var timerManager: TimerManager
+    @ObservedObject private var timerManager = TimerManager.shared
     @AppStorage("sittingTime") private var sittingTime: Double = 30
     @AppStorage("standingTime") private var standingTime: Double = 10
     @AppStorage("showWelcome") private var showWelcome: Bool = true
@@ -23,15 +21,19 @@ struct ContentView: View {
         HStack {
             if isFullScreen {
                 IdleModeView(currentTime: currentTime)
-                    .environmentObject(timerManager)
             } else {
-                NormalModeView(sittingTime: $sittingTime, standingTime: $standingTime)
-                    .environmentObject(timerManager)
+                NavigationSplitView {
+                    SidebarView()
+                } detail: {
+                    DetailView()
+                }
+                .frame(minWidth: 750)
+                .background(.ultraThickMaterial)
             }
         }
         .onAppear() {
             if showWelcome {
-                WelcomeWindowController.shared.showWelcomeView(timerManager: timerManager)
+                WelcomeWindowController.shared.showWelcomeView()
             }
         }
         
@@ -51,6 +53,9 @@ struct ContentView: View {
            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                isFullScreen = false
            }
+        }
+        .onDisappear {
+            NSApplication.shared.terminate(nil)
         }
     }
 }

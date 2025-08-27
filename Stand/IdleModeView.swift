@@ -6,11 +6,11 @@
 //
 
 import SwiftUI
-import Luminare
+import Cocoa
 
 // -MARK: Idle mode
 struct IdleModeView: View {
-    @EnvironmentObject private var timerManager: TimerManager
+    @ObservedObject private var timerManager = TimerManager.shared
     let currentTime: Date
     @State private var currentChallenge: Challenge = challenges.randomElement()!
 
@@ -38,7 +38,6 @@ struct IdleModeView: View {
                     .fontWeight(.medium)
                 
                 ControlButtons()
-                    .environmentObject(timerManager)
             }
             
             ChallengeCard()
@@ -48,7 +47,7 @@ struct IdleModeView: View {
         .padding(20)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.black)
-        .edgesIgnoringSafeArea(.all)
+        .ignoresSafeArea()
     }
     
     private func timeString(from timeInterval: TimeInterval) -> String {

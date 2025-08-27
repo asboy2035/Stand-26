@@ -7,104 +7,89 @@
 
 import SwiftUI
 import LaunchAtLogin
-import Luminare
-
-struct NormalModeView: View {
-    @EnvironmentObject private var timerManager: TimerManager
-    @Binding var sittingTime: Double
-    @Binding var standingTime: Double
-    
-    var body: some View {
-        NavigationSplitView {
-            SidebarView(
-                sittingTime: $sittingTime,
-                standingTime: $standingTime
-            )
-        } detail: {
-            DetailView()
-                .background(
-                    RoundedRectangle(cornerRadius: 22)
-                        .padding(4)
-                        .ignoresSafeArea()
-                        .frame(
-                            minWidth: nil,
-                            maxWidth: .infinity,
-                            minHeight: nil,
-                            maxHeight: .infinity
-                        )
-                        .foregroundStyle(timerManager.currentInterval.color.opacity(0.2))
-                )
-                .layoutPriority(1)
-        }
-        .frame(minWidth: 635)
-        
-        .background(
-            VisualEffectView(
-                material: .menu,
-                blendingMode: .behindWindow
-            )
-            .ignoresSafeArea()
-        )
-        
-        .onAppear {
-            timerManager.initializeWithStoredTimes(
-                sitting: sittingTime,
-                standing: standingTime
-            )
-        }
-        .onReceive(NotificationCenter.default.publisher(for: NSWindow.didExitFullScreenNotification)) { _ in
-            if let window = NSApplication.shared.windows.first {
-                window.titlebarAppearsTransparent = true
-                window.isOpaque = false
-                window.backgroundColor = .clear // Set the background color to clear
-                
-                window.styleMask.insert(.fullSizeContentView)
-            }
-        }
-    }
-}
 
 // -MARK: Sidebar
 struct SidebarView: View {
-    @Binding var sittingTime: Double
-    @Binding var standingTime: Double
-    @EnvironmentObject private var timerManager: TimerManager
+    @ObservedObject private var timerManager = TimerManager.shared
     let availableSounds = ["Funk", "Ping", "Tink", "Glass", "Basso"]
-    @State var showStats = false
     @AppStorage("showOccasionalReminders") private var showOccasionalReminders = true
+    
+    private var sittingTime: Double {
+        timerManager.sittingTime
+    }
+    
+    private var standingTime: Double {
+        timerManager.standingTime
+    }
+    
+    // Helper Bindings for minutes
+    private var sittingTimeMinutes: Binding<Double> {
+        Binding<Double>(
+            get: { timerManager.sittingTime / 60 },
+            set: { timerManager.sittingTime = $0 * 60 }
+        )
+    }
+
+    private var standingTimeMinutes: Binding<Double> {
+        Binding<Double>(
+            get: { timerManager.standingTime / 60 },
+            set: { timerManager.standingTime = $0 * 60 }
+        )
+    }
     
     var body: some View {
         List {
-            Text("appName")
-                .font(.largeTitle)
-                .padding(.top, 30)
-                .padding(.bottom)
-            
             VStack {
                 Button(action: {
                     timerManager.toggleFloatingWindow()
                 }) {
                     Label("toggleWidgetLabel", systemImage: "widget.small")
+                        .modifier(ButtonLabelStyle())
                 }
-                
-                Button(action: { showStats.toggle() }) {
-                    Label("showStatsLabel", systemImage: "chart.bar")
-                }
+                .modifier(StandardButtonStyle())
             }
             
-            LuminareSection("intervalsLabel") {
-                LuminareValueAdjuster(
-                    "sittingTimeLabel",
-                    value: $sittingTime,
-                    sliderRange: 5...60,
-                    suffix: "minutesAbbr"
-                )
-                LuminareValueAdjuster(
-                    "standingTimeLabel",
-                    value: $standingTime,
-                    sliderRange: 5...60,
-                    suffix: "minutesAbbr"
-                )
+            Group {
+                Section(header: Text("intervalsLabel")) {
+                    HStack {
+                        Label("sittingTimeLabel", systemImage: IntervalType.sitting.systemImage)
+                        Spacer()
+                        
+                        HStack(spacing: 2) {
+                            Text(
+                                String(
+                                    (sittingTime / 60)
+                                        .rounded(.toNearestOrAwayFromZero)
+                                ).replacingOccurrences(of: ".0", with: "")
+                            )
+                            Text("minutesAbbr")
+                        }
+                        .foregroundStyle(.secondary)
+                    }
+                    Slider(
+                        value: sittingTimeMinutes,
+                        in: 1...60,
+                    )
+                    HStack {
+                        Label("standingTimeLabel", systemImage: IntervalType.standing.systemImage)
+                        Spacer()
+                        
+                        HStack(spacing: 2) {
+                            Text(
+                                String(
+                                    (standingTime / 60)
+                                        .rounded(.toNearestOrAwayFromZero)
+                                ).replacingOccurrences(of: ".0", with: "")
+                            )
+                            Text("minutesAbbr")
+                        }
+                        .foregroundStyle(.secondary)
+                    }
+                    Slider(
+                        value: standingTimeMinutes,
+                        in: 1...60,
+                    )
+                }
             }
             
             Button(action: {
@@ -115,15 +100,16 @@ struct SidebarView: View {
             .buttonStyle(.borderless)
             
 #if DEBUG
-            LuminareSection("DEBUG") { // Debug tools
-                LuminareToggle("showOccasionalRemindersLabel", isOn: $showOccasionalReminders)
+            Section("DEBUG") { // Debug tools
+                Toggle("showOccasionalRemindersLabel", isOn: $showOccasionalReminders)
+                    .toggleStyle(.switch)
             }
              
             VStack {
                 Button(action: {
-                    AboutWindowController.shared.showAboutView(timerManager: timerManager)
+                    AboutWindowController.shared.showAboutView()
                     UpdateWindowController.shared.showUpdateView()
-                    WelcomeWindowController.shared.showWelcomeView(timerManager: timerManager)
+                    WelcomeWindowController.shared.showWelcomeView()
                     SettingsWindowController.shared.showSettingsView()
                 }) {
                     Label("Show all windows", systemImage: "macwindow.on.rectangle")
@@ -144,11 +130,6 @@ struct SidebarView: View {
             }
 #endif
         }
-        .buttonStyle(LuminareCompactButtonStyle())
-        .luminareModal(isPresented: $showStats, closeOnDefocus: true) {
-            StatsView(showStats: $showStats)
-                .environmentObject(timerManager)
-        }
         .listStyle(.sidebar)
         .scrollContentBackground(.hidden)
         .frame(minWidth: 225)
@@ -157,9 +138,10 @@ struct SidebarView: View {
 
 // -MARK: Detail (timer)
 struct DetailView: View {
-    @EnvironmentObject private var timerManager: TimerManager
+    @ObservedObject private var timerManager = TimerManager.shared
     @State private var currentChallenge: Challenge = challenges.randomElement()!
-    
+    @State var showStats = false
+
     var body: some View {
         VStack(spacing: 20) {
             HStack(spacing: 15) {
@@ -169,7 +151,7 @@ struct DetailView: View {
                     .font(.title)
             }
             .foregroundStyle(.secondary)
-
+            
             Text(timeString(from: timerManager.remainingTime))
                 .animation(
                     .easeInOut(duration: 0.1),
@@ -178,23 +160,23 @@ struct DetailView: View {
                 .font(.system(size: 48, design: .monospaced))
             
             ControlButtons()
-                .environmentObject(timerManager)
-            
             ChallengeCard()
                 .padding(.horizontal)
                 .padding(.top, 20)
-
-        }
-        .navigationTitle(NSLocalizedString("appName", comment: "App name for main content title"))
-        .toolbar {
-//            ToolbarItem(placement: .navigation) {
-//                Button(action: {
-//                    AboutWindowController.shared.showAboutView(timerManager: timerManager)
-//                }) {
-//                    Label("aboutMenuLabel", systemImage: "info.circle")
-//                }
-//            }
             
+        }
+        .frame(minWidth: 375, idealWidth: nil, maxWidth: .infinity, minHeight: 400, idealHeight: nil, maxHeight: .infinity)
+        .navigationTitle(NSLocalizedString("appName", comment: "App name for main content title"))
+        .navigationSubtitle("26")
+        .sheet(isPresented: $showStats) {
+            StatsView(showStats: $showStats)
+        }
+        .toolbar {
+            ToolbarItem(placement: .automatic) {
+                Button(action: { showStats.toggle() }) {
+                    Label("showStatsLabel", systemImage: "chart.bar")
+                }
+            }
             if timerManager.isPaused {
                 ToolbarItem(placement: .automatic) {
                     Button(action: {
@@ -216,7 +198,6 @@ struct DetailView: View {
                 }
             }
         }
-        .frame(minWidth: 375, idealWidth: nil, maxWidth: .infinity, minHeight: 375, idealHeight: nil, maxHeight: .infinity)
     }
     
     private func timeString(from timeInterval: TimeInterval) -> String {
@@ -226,9 +207,3 @@ struct DetailView: View {
     }
 }
 
-// -MARK: Misc
-#Preview {
-//    StatsView()
-    NormalModeView(sittingTime: .constant(30), standingTime: .constant(30))
-        .environmentObject(TimerManager())
-}

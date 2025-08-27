@@ -6,12 +6,11 @@
 //
 
 import SwiftUI
-import Luminare
 
 // -MARK: AboutWindowController
 class AboutWindowController: NSObject {
     private var window: NSWindow?
-    @EnvironmentObject private var timerManager: TimerManager
+    @ObservedObject private var timerManager = TimerManager.shared
 
     static let shared = AboutWindowController()
     
@@ -19,15 +18,14 @@ class AboutWindowController: NSObject {
         super.init()
     }
 
-    func showAboutView(timerManager: TimerManager) {
+    func showAboutView() {
         if window == nil {
             let aboutView = AboutView()
-                .environmentObject(timerManager)
             let hostingController = NSHostingController(rootView: aboutView)
 
             let window = NSWindow(
                 contentRect: NSRect(x: 0, y: 0, width: 600, height: 450),
-                styleMask: [.titled, .closable, .fullSizeContentView],
+                styleMask: [.titled, .closable, .fullSizeContentView, .resizable],
                 backing: .buffered,
                 defer: false
             )
@@ -45,16 +43,9 @@ class AboutWindowController: NSObject {
     }
 }
 
-class AboutViewModel: ObservableObject {
-    @Published var currentTab: Tab = .about
-    
-    let aboutSection: [Tab] = Tab.aboutSection
-}
-
 // -MARK: AboutView
 struct AboutView: View {
-    @EnvironmentObject private var timerManager: TimerManager
-    @ObservedObject var viewModel = AboutViewModel()
+    @ObservedObject private var timerManager = TimerManager.shared
     
     private var appVersion: String {
         if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
@@ -65,30 +56,21 @@ struct AboutView: View {
     
     var body: some View {
         NavigationSplitView {
-            VStack {
-                LuminareSidebar {
-                    LuminareSidebarSection("aboutLabel", selection: $viewModel.currentTab, items: viewModel.aboutSection)
-                }
+            List {
+                AboutSection()
             }
-            .padding(.top, 56)
-            .frame(width: 200, height: 400)
+            .listStyle(.sidebar)
+            .frame(width: 200)
         } detail: {
-            LuminarePane {
-                HStack {
-                    viewModel.currentTab.iconView()
-                    
-                    Text(viewModel.currentTab.title)
-                        .font(.title2)
-                    
-                    Spacer()
-                }
-            } content: {
-                viewModel.currentTab.view()
-                    .padding()
-                    .frame(width: 400, height: 400)
-            }
-            .frame(width: 400)
+            AboutContentView(appVersion: appVersion)
         }
+        .frame(minWidth: 600, minHeight: 400)
+        .background(
+            VisualEffectView(
+                material: .headerView,
+                blendingMode: .behindWindow
+            ).ignoresSafeArea()
+        )
         .toolbar {
             ToolbarItem(placement: .automatic) {
                 Button(action: {
@@ -100,7 +82,7 @@ struct AboutView: View {
                 }
             }
         }
-        .background(VisualEffectView(material: .menu, blendingMode: .behindWindow).edgesIgnoringSafeArea(.all))
+        .navigationSubtitle("appName")
     }
 }
 
@@ -149,7 +131,7 @@ struct CreditsView: View {
     var body: some View {
         VStack {
             VStack {
-                LuminareSection {
+                Section {
                     ForEach(dependencies, id: \.name) { dependency in
                         Button(action: {
                             if let url = URL(string: dependency.url) {
@@ -157,6 +139,9 @@ struct CreditsView: View {
                             }
                         }) {
                             HStack {
+                                Image(systemName: dependency.systemImage)
+                                    .frame(width: 35)
+                                    
                                 VStack(alignment: .leading) {
                                     Text(dependency.name)
                                     Text(dependency.license)
@@ -166,25 +151,29 @@ struct CreditsView: View {
                                 .padding(.horizontal, 12)
                                 Spacer()
                             }
+                            .modifier(ButtonLabelStyle())
                         }
-                        .frame(maxHeight: 45)
-                        .buttonStyle(
-                            LuminareCosmeticButtonStyle(
-                                Image(systemName: dependency.systemImage)
-                            )
-                        )
+                        .modifier(StandardButtonStyle())
                     }
                 }
                 Spacer()
             }
+            .padding()
         }
+        .background(
+            VisualEffectView(
+                material: .headerView,
+                blendingMode: .behindWindow
+            ).ignoresSafeArea()
+        )
+        .navigationTitle("creditsLabel")
     }
 }
 
 // -MARK: About Content
 struct AboutContentView: View {
     @State private var isLatestVersion: Bool = true
-    @EnvironmentObject private var timerManager: TimerManager
+    @ObservedObject private var timerManager = TimerManager.shared
     var appVersion: String
 
     var body: some View {
@@ -209,29 +198,37 @@ struct AboutContentView: View {
                 )
             }
             .disabled(isLatestVersion)
-            .buttonStyle(LuminareCompactButtonStyle())
+            .modifier(StandardButtonStyle())
             .frame(width: 150, height: 35)
             Text("thanksText")
             Text("madeWithLove")
         }
         .padding()
+        .background(
+            VisualEffectView(
+                material: .headerView,
+                blendingMode: .behindWindow
+            ).ignoresSafeArea()
+        )
         .onAppear() {
             checkForUpdates()
+            print(appVersion)
         }
         .toolbar {
             ToolbarItem(placement: .automatic) {
                 Button(action: {
-                    WelcomeWindowController.shared.showWelcomeView(timerManager: timerManager)
+                    WelcomeWindowController.shared.showWelcomeView()
                 }) {
                     Label("welcome", systemImage: "figure.wave")
                 }
             }
         }
+        .navigationTitle("aboutLabel")
     }
     
     private func checkForUpdates() {
         guard let url = URL(
-            string: "https://api.github.com/repos/asboy2035/Stand/releases/latest"
+            string: "https://api.github.com/repos/asboy2035/Stand-26/releases/latest"
         ) else {
             print("Invalid URL")
             return
@@ -270,6 +267,6 @@ struct GitHubRelease: Codable {
 }
 
 #Preview {
-    AboutView(viewModel: .init())
+    AboutView()
 }
 

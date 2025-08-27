@@ -8,7 +8,6 @@
 
 import SwiftUI
 import AppKit
-import Luminare
 
 class FloatingWindow: NSPanel {
     init(contentView: NSView) {
@@ -31,7 +30,7 @@ class FloatingWindow: NSPanel {
 }
 
 struct FloatingWindowView: View {
-    @EnvironmentObject var timerManager: TimerManager
+    @ObservedObject var timerManager = TimerManager.shared
     
     var body: some View {
         VStack {
@@ -51,28 +50,25 @@ struct FloatingWindowView: View {
                     Image(systemName: "power.circle.fill")
                 }
             }
-            .padding(.horizontal, 10)
-            .padding(.bottom, 6)
             .foregroundStyle(.tertiary)
             .buttonStyle(.borderless)
             
-            VStack(spacing: 10) {
-                VStack(spacing: 2) {
-                    Text(timerManager.currentInterval.localizedString)
-                        .font(.system(size: 14))
-                        .foregroundStyle(.secondary)
-                    
-                    Text(timerManager.remainingTimeString)
-                        .font(.system(size: 32, weight: .light, design: .monospaced))
-                }
-                .padding(.bottom, 8)
+            Spacer()
+            
+            VStack(spacing: 2) {
+                Text(timerManager.currentInterval.localizedString)
+                    .font(.system(size: 14))
+                    .foregroundStyle(.secondary)
                 
-                ControlButtons(showTooltips: false)
-                    .environmentObject(timerManager)
+                Text(timerManager.remainingTimeString)
+                    .font(.system(size: 32, weight: .light, design: .monospaced))
             }
-            .padding(.bottom, 8)
+            
+            Spacer()
+            ControlButtons(showTooltips: false)
         }
-        .frame(width: 150, height: 150)
+        .padding(12)
+        .frame(width: 175, height: 175)
         .background(timerManager.currentInterval.color.opacity(0.2))
         .background(
             VisualEffectView(
@@ -80,8 +76,7 @@ struct FloatingWindowView: View {
                 blendingMode: .behindWindow
             ).ignoresSafeArea()
         )
-        .overlay(RoundedRectangle(cornerRadius: 18).stroke(.tertiary, lineWidth: 1))
-        .mask(RoundedRectangle(cornerRadius: 18))
+        .mask(RoundedRectangle(cornerRadius: 22))
     }
 }
 
@@ -91,4 +86,8 @@ private extension TimerManager {
         let seconds = Int(remainingTime) % 60
         return String(format: "%02d:%02d", minutes, seconds)
     }
+}
+
+#Preview {
+    FloatingWindowView()
 }

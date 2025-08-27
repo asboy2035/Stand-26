@@ -7,13 +7,11 @@
 
 import SwiftUI
 import LaunchAtLogin
-import Luminare
 import DynamicNotchKit
 
 // -MARK: Welcome controller
 class WelcomeWindowController: NSObject {
     private var window: NSWindow?
-
     static let shared = WelcomeWindowController()
     
     private override init() {
@@ -24,10 +22,9 @@ class WelcomeWindowController: NSObject {
         window?.close()
     }
 
-    func showWelcomeView(timerManager: TimerManager) {
+    func showWelcomeView() {
         if window == nil {
             let welcomeView = WelcomeView()
-                .environmentObject(timerManager)
             let hostingController = NSHostingController(rootView: welcomeView)
 
             let window = NSWindow(
@@ -53,7 +50,7 @@ class WelcomeWindowController: NSObject {
 
 // -MARK: Welcome View
 struct WelcomeView: View {
-    @EnvironmentObject private var timerManager: TimerManager
+    @ObservedObject private var timerManager = TimerManager.shared
     @AppStorage("showWelcome") var showWelcome: Bool = true
     @State private var currentSlideIndex = 0
     
@@ -87,7 +84,6 @@ struct WelcomeView: View {
                 VStack {
                     Spacer()
                     slides[currentSlideIndex].view
-                        .environmentObject(timerManager)
                         .frame(height: 200)
                     Spacer()
                     
@@ -113,7 +109,9 @@ struct WelcomeView: View {
                             }
                         }) {
                             Image(systemName: "arrow.left")
+                                .modifier(ButtonLabelStyle())
                         }
+                        .modifier(StandardButtonStyle())
                         
                         Spacer()
                         
@@ -126,9 +124,10 @@ struct WelcomeView: View {
                             }
                         }) {
                             Image(systemName: currentSlideIndex == slides.count - 1 ? "checkmark" : "arrow.right")
+                                .modifier(ButtonLabelStyle())
                         }
+                        .modifier(StandardButtonStyle())
                     }
-                    .buttonStyle(LuminareCompactButtonStyle())
                     .frame(height: 35)
                 }
                 .multilineTextAlignment(.center)
@@ -161,14 +160,18 @@ struct WelcomeView: View {
                             }
                         }) {
                             Image(systemName: "arrow.left")
+                                .modifier(ButtonLabelStyle())
                         }
-                        .frame(width: 75)
+                        .modifier(StandardButtonStyle())
+                        .frame(width: 55)
                         
                         Button(action: {
                             WelcomeWindowController.shared.close()
                         }) {
                             Text("doneLabel")
+                                .modifier(ButtonLabelStyle())
                         }
+                        .modifier(StandardButtonStyle())
                         
                         if showWelcome {
                             Button(action: {
@@ -176,13 +179,11 @@ struct WelcomeView: View {
                                 WelcomeWindowController.shared.close()
                             }) {
                                 Text("dontShowAgainLabel")
+                                    .modifier(ButtonLabelStyle())
                             }
-                            .background(Color.red.opacity(0.2))
-                            .cornerRadius(8)
+                            .modifier(StandardButtonStyle())
                         }
                     }
-                    .buttonStyle(LuminareCompactButtonStyle())
-                    .frame(height: 35)
                     .padding(.top)
                 }
             }
@@ -193,8 +194,7 @@ struct WelcomeView: View {
                 .ignoresSafeArea(.all)
         )
         .frame(width: 400, height: 400)
-        .overlay(RoundedRectangle(cornerRadius: 22).stroke(.tertiary, lineWidth: 1))
-        .mask(RoundedRectangle(cornerRadius: 22))
+        .mask(RoundedRectangle(cornerRadius: 24))
     }
 }
 
@@ -249,7 +249,7 @@ struct IntervalsDemoView: View {
 
 // -MARK: Notifications select
 struct NotificationsDemoView: View {
-    @EnvironmentObject var timerManager: TimerManager
+    @ObservedObject var timerManager = TimerManager.shared
     @AppStorage("notificationType") var notificationType: NotificationType = .banner
     @AppStorage("showOccasionalReminders") private var showOccasionalReminders = true
 
@@ -258,29 +258,30 @@ struct NotificationsDemoView: View {
             Text("chooseNotiStyle")
                 .font(.title3)
             
-            LuminareSection {
-                HStack(spacing: 4) {
-                    Button(action: {
-                        notificationType = .banner
-                    }) {
-                        Label("Banner", systemImage: "bell.badge.fill")
-                    }
-                    
-                    Button(action: {
-                        notificationType = .hud
-                    }) {
-                        Label("HUD", systemImage: "square.fill")
-                    }
+            HStack(spacing: 4) {
+                Button(action: {
+                    notificationType = .banner
+                }) {
+                    Label("Banner", systemImage: "bell.badge.fill")
+                        .modifier(ButtonLabelStyle())
                 }
-                .frame(height: 35)
-                .buttonStyle(LuminareCompactButtonStyle())
+                .modifier(StandardButtonStyle())
+                
+                Button(action: {
+                    notificationType = .hud
+                }) {
+                    Label("HUD", systemImage: "square.fill")
+                        .modifier(ButtonLabelStyle())
+                }
+                .modifier(StandardButtonStyle())
             }
             
             Text("canChangeLater")
                 .font(.caption)
                 .foregroundStyle(.secondary)
             
-            LuminareToggle("showOccasionalRemindersLabel", isOn: $showOccasionalReminders)
+            Toggle("showOccasionalRemindersLabel", isOn: $showOccasionalReminders)
+                .toggleStyle(.switch)
         }
         .onAppear() {
             let HUDNoti = HUD(
@@ -312,8 +313,8 @@ struct NotificationsDemoView: View {
             )
             settedNoti.show(for: 2)
         }
-        .padding(8)
-        .overlay(RoundedRectangle(cornerRadius: 16).stroke(.tertiary.opacity(0.5), lineWidth: 1))
+        .padding()
+        .overlay(RoundedRectangle(cornerRadius: 18).stroke(.tertiary.opacity(0.5), lineWidth: 1))
     }
 }
 

@@ -11,7 +11,6 @@
 		5E2FAFE82D5F9120007DA20C /* DynamicNotchKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5E2FAFE72D5F9120007DA20C /* DynamicNotchKit */; };
 		5E2FB0132D5F96C0007DA20C /* DynamicNotchKit in Frameworks */ = {isa = PBXBuildFile; productRef = 5E2FB0122D5F96C0007DA20C /* DynamicNotchKit */; };
 		5E2FB0162D5F9A82007DA20C /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = 5E2FB0152D5F9A82007DA20C /* MarkdownUI */; };
-		5EB03C312D5A440400783251 /* Luminare in Frameworks */ = {isa = PBXBuildFile; productRef = 5EB03C302D5A440400783251 /* Luminare */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,7 +49,6 @@
 				5E2FB0132D5F96C0007DA20C /* DynamicNotchKit in Frameworks */,
 				5E2FAFE82D5F9120007DA20C /* DynamicNotchKit in Frameworks */,
 				5E0677BD2D3D4DFD00D04ACA /* LaunchAtLogin in Frameworks */,
-				5EB03C312D5A440400783251 /* Luminare in Frameworks */,
 				5E2FB0162D5F9A82007DA20C /* MarkdownUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -106,7 +104,6 @@
 			name = SitStandTimer;
 			packageProductDependencies = (
 				5E0677BC2D3D4DFD00D04ACA /* LaunchAtLogin */,
-				5EB03C302D5A440400783251 /* Luminare */,
 				5E2FAFE72D5F9120007DA20C /* DynamicNotchKit */,
 				5E2FB0122D5F96C0007DA20C /* DynamicNotchKit */,
 				5E2FB0152D5F9A82007DA20C /* MarkdownUI */,
@@ -145,7 +142,6 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				5E0677BB2D3D4DFD00D04ACA /* XCRemoteSwiftPackageReference "LaunchAtLogin-Modern" */,
-				5EB03C2F2D5A440400783251 /* XCRemoteSwiftPackageReference "Luminare-Safe" */,
 				5E2FB0112D5F96C0007DA20C /* XCRemoteSwiftPackageReference "DynamicNotchKit" */,
 				5E2FB0142D5F9A82007DA20C /* XCRemoteSwiftPackageReference "swift-markdown-ui" */,
 			);
@@ -323,13 +319,24 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 36;
+				CURRENT_PROJECT_VERSION = 37;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=macosx*]" = 9XCKWAKCP6;
+				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = NO;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
+				ENABLE_RESOURCE_ACCESS_BLUETOOTH = NO;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
+				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
+				ENABLE_RESOURCE_ACCESS_PRINTING = NO;
+				ENABLE_RESOURCE_ACCESS_USB = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Stand/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Stand;
@@ -344,7 +351,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 26.0;
-				MARKETING_VERSION = 26.0;
+				MARKETING_VERSION = 26.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.asboy2035.Stand.26;
 				PRODUCT_NAME = Stand;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -365,13 +372,24 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 36;
+				CURRENT_PROJECT_VERSION = 37;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=macosx*]" = 9XCKWAKCP6;
+				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = NO;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
+				ENABLE_RESOURCE_ACCESS_BLUETOOTH = NO;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
+				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
+				ENABLE_RESOURCE_ACCESS_PRINTING = NO;
+				ENABLE_RESOURCE_ACCESS_USB = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Stand/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Stand;
@@ -386,7 +404,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 26.0;
-				MARKETING_VERSION = 26.0;
+				MARKETING_VERSION = 26.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.asboy2035.Stand.26;
 				PRODUCT_NAME = Stand;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -444,14 +462,6 @@
 				minimumVersion = 2.4.1;
 			};
 		};
-		5EB03C2F2D5A440400783251 /* XCRemoteSwiftPackageReference "Luminare-Safe" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/asboy2035/Luminare-Safe";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -473,11 +483,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5E2FB0142D5F9A82007DA20C /* XCRemoteSwiftPackageReference "swift-markdown-ui" */;
 			productName = MarkdownUI;
-		};
-		5EB03C302D5A440400783251 /* Luminare */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5EB03C2F2D5A440400783251 /* XCRemoteSwiftPackageReference "Luminare-Safe" */;
-			productName = Luminare;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

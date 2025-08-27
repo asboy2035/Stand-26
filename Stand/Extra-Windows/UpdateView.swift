@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Luminare
 import MarkdownUI
 
 struct UpdateView: View {
@@ -29,10 +28,8 @@ struct UpdateView: View {
 
             if !updateBody.isEmpty {
                 ScrollView {
-                    LuminareSection("infoTitle") {
-                        Markdown(updateBody)
-                            .padding()
-                    }
+                    Markdown(updateBody)
+                        .padding()
                 }
             }
 
@@ -48,8 +45,9 @@ struct UpdateView: View {
                             }
                         }) {
                             Label("GitHub", systemImage: "link")
-                                .padding(5)
+                                .modifier(ButtonLabelStyle())
                         }
+                        .modifier(StandardButtonStyle())
                     } else {
                         Text("loadingUpdate")
                     }
@@ -60,11 +58,11 @@ struct UpdateView: View {
                         }
                     }) {
                         Label("App Store", systemImage: "applelogo")
+                            .modifier(ButtonLabelStyle())
                     }
+                    .modifier(StandardButtonStyle())
                 }
-                .frame(height: 35)
             }
-            .buttonStyle(LuminareCompactButtonStyle())
         }
         .padding(20)
         .frame(width: 400, height: 400)
@@ -77,8 +75,7 @@ struct UpdateView: View {
         .onAppear {
             self.getUpdateData()
         }
-        .overlay(RoundedRectangle(cornerRadius: 22).stroke(.tertiary, lineWidth: 1))
-        .mask(RoundedRectangle(cornerRadius: 22))
+        .mask(RoundedRectangle(cornerRadius: 24))
     }
 
     private func getUpdateData() {

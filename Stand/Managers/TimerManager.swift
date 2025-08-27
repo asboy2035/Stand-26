@@ -16,22 +16,28 @@ enum IntervalType {
     
     var localizedString: String {
         switch self {
-        case .sitting: return NSLocalizedString("sittingLabel", comment: "")
-        case .standing: return NSLocalizedString("standingLabel", comment: "")
+        case .sitting:
+            return NSLocalizedString("sittingLabel", comment: "")
+        case .standing:
+            return NSLocalizedString("standingLabel", comment: "")
         }
     }
     
     var infinitiveLocalizedString: String {
         switch self {
-        case .sitting: return NSLocalizedString("sitLabel", comment: "")
-        case .standing: return NSLocalizedString("standLabel", comment: "")
+        case .sitting:
+            return NSLocalizedString("sitLabel", comment: "")
+        case .standing:
+            return NSLocalizedString("standLabel", comment: "")
         }
     }
     
     var systemImage: String {
         switch self {
-        case .sitting: return "figure.seated.side.left"
-        case .standing: return "figure.stand"
+        case .sitting: 
+            return "figure.seated.side.left"
+        case .standing: 
+            return "figure.stand"
         }
     }
     
@@ -42,14 +48,16 @@ enum IntervalType {
         case .sitting:
             return .indigo
         case .standing:
-            return usingNewColors ? .mint : .yellow
+            return usingNewColors ? .pink : .yellow
         }
     }
     
     var appIconName: String {
         switch self {
-        case .sitting: return "Sitting-26"
-        case .standing: return "Standing-26"
+        case .sitting:
+            return "Sitting-26"
+        case .standing:
+            return "Standing-26"
         }
     }
 }
@@ -72,11 +80,22 @@ class TimerManager: ObservableObject {
     private var timer: Timer?
     private var historyTimer: Timer?
     private var reminderManager: RandomReminderManager?
-    private var sittingTime: TimeInterval = 30 * 60
-    private var standingTime: TimeInterval = 10 * 60
+    @Published var sittingTime: TimeInterval = 30 * 60 {
+        didSet {
+            UserDefaults.standard.set(sittingTime, forKey: "sittingTime")
+        }
+    }
+
+    @Published var standingTime: TimeInterval = 10 * 60 {
+        didSet {
+            UserDefaults.standard.set(standingTime, forKey: "standingTime")
+        }
+    }
     private var lastHistoryUpdateTime: Date = Date()
     private var startTime: Date?
     private var pauseNotch: AdaptableNotificationType?
+    
+    static let shared = TimerManager()
     
     init(headless: Bool = false) {
         self.headless = headless
@@ -148,7 +167,6 @@ class TimerManager: ObservableObject {
     func toggleFloatingWindow() {
         if floatingWindowController == nil {
             let contentView = FloatingWindowView()
-                .environmentObject(self)
             let hostingController = NSHostingController(rootView: contentView)
             let floatingWindow = FloatingWindow(contentView: hostingController.view)
             

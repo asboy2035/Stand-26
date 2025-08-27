@@ -38,6 +38,9 @@
     "9:41" : {
       "shouldTranslate" : false
     },
+    "26" : {
+
+    },
     "aboutLabel" : {
       "localizations" : {
         "de" : {
@@ -74,7 +77,6 @@
     },
     "aboutMenuLabel" : {
       "comment" : "The title for the about menu item.",
-      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -425,9 +427,6 @@
         }
       }
     },
-    "DEBUG" : {
-      "shouldTranslate" : false
-    },
     "doneLabel" : {
       "comment" : "Button that says \"done\".",
       "localizations" : {
@@ -499,35 +498,28 @@
       }
     },
     "experimentsLabel" : {
-      "extractionState" : "extracted_with_value",
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Experimente"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "Experiments"
           }
         },
         "es" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Experimentos"
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Expériences"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "实验"
           }
         }
@@ -643,6 +635,7 @@
     },
     "infoTitle" : {
       "comment" : "Title for info section of updater.",
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -1445,9 +1438,6 @@
         }
       }
     },
-    "Show all windows" : {
-      "shouldTranslate" : false
-    },
     "showNotchLabel" : {
       "comment" : "Toolbar button to show the pause notch.",
       "localizations" : {
@@ -1909,9 +1899,6 @@
           }
         }
       }
-    },
-    "Test Notification" : {
-      "shouldTranslate" : false
     },
     "thanksText" : {
       "comment" : "Thanks message (about window)",

@@ -23,4 +23,3 @@ Stand supports multiple languages:
 - [thorsten](https://github.com/thorsten) - German translation
 - [DynamicNotchKit](https://github.com/MrKai77/DynamicNotchKit) - Notifications that work seamlessly with the notch.
 - [LaunchAtLogin](https://github.com/sindresorhus/LaunchAtLogin-Modern) - Launch at login functionality within seconds.
-- [Luminare](https://github.com/MrKai77/Luminare) - The modern translucent SwiftUI design system.

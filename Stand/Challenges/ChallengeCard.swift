@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Luminare
 
 struct ChallengeCard: View {
     @State private var currentChallenge: Challenge = challenges.randomElement()!
@@ -19,9 +18,8 @@ struct ChallengeCard: View {
             
             VStack(alignment: .leading) {
                 Text(currentChallenge.title)
-                    .font(.title2)
                 Text(currentChallenge.description)
-                    .font(.body)
+                    .font(.caption)
                     .foregroundStyle(.secondary)
             }
             
@@ -31,20 +29,18 @@ struct ChallengeCard: View {
                 Image(systemName: "arrow.clockwise")
                     .frame(height: 25)
             }
-            .buttonStyle(LuminareCompactButtonStyle())
-            .frame(width: 35, height: 40)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+            .frame(width: 35, height: 35)
         }
         .padding(.horizontal, 10)
         .padding(.vertical, 8)
-        .background(.tertiary.opacity(0.2))
-        .mask(RoundedRectangle(cornerRadius: 13))
-        .overlay(
-            RoundedRectangle(cornerRadius: 13)
-                .stroke(.tertiary.opacity(0.5), lineWidth: 1)
-        )
+        .background(.ultraThinMaterial)
+        .clipShape(RoundedRectangle(cornerRadius: 20))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 20))
     }
 }
 
 #Preview {
     ChallengeCard()
+        .padding()
 }

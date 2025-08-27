@@ -6,11 +6,10 @@
 //
 
 import SwiftUI
-import Luminare
 
 // -MARK: Stats
 struct StatsView: View {
-    @EnvironmentObject private var timerManager: TimerManager
+    @ObservedObject private var timerManager = TimerManager.shared
     @Binding var showStats: Bool
     
     private func formatTime(minutes: Int) -> String {
@@ -21,7 +20,7 @@ struct StatsView: View {
     
     var body: some View {
         VStack {
-            LuminareSection {
+            VStack {
                 VStack(spacing: 4) {
                     HStack {
                         Image(systemName: "clock.fill")
@@ -43,20 +42,29 @@ struct StatsView: View {
                     )
                     .font(.system(.title, design: .monospaced))
                 }
+                .modifier(ButtonLabelStyle())
+                .padding()
+                .modifier(StandardButtonStyle())
                 
-                StatsInfoCard(interval: .sitting, minutes: timerManager.timeHistory.sittingMinutes)
-                StatsInfoCard(interval: .standing, minutes: timerManager.timeHistory.standingMinutes)
+                HStack {
+                    StatsInfoCard(interval: .sitting, minutes: timerManager.timeHistory.sittingMinutes)
+                    StatsInfoCard(interval: .standing, minutes: timerManager.timeHistory.standingMinutes)
+                }
             }
-            
-            // Close button to dismiss the modal
-            Button(action: {
-                showStats = false
-            }) {
-                Label("closeLabel", systemImage: "xmark")
-            }
-            .buttonStyle(LuminareCompactButtonStyle())
         }
-        .frame(minWidth: 150)
+        .toolbar {
+            ToolbarItem(placement: .cancellationAction) {
+                Button(action: {
+                    showStats = false
+                }) {
+                    Label("closeLabel", systemImage: "xmark")
+                        .padding(.vertical, 4)
+                }
+                .clipShape(.capsule)
+            }
+        }
+        .padding()
+        .frame(width: 350)
     }
 }
 
@@ -84,5 +92,14 @@ struct StatsInfoCard: View {
             Text(formatTime(minutes: minutes))
                 .font(.system(.title, design: .monospaced))
         }
+        .modifier(ButtonLabelStyle())
+        .padding()
+        .modifier(StandardButtonStyle())
     }
+}
+
+#Preview {
+    @Previewable @State var showStats: Bool = true
+    
+    StatsView(showStats: $showStats)
 }

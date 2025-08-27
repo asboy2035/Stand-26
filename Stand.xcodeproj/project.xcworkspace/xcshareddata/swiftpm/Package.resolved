@@ -1,5 +1,5 @@
 {
-  "originHash" : "29ba33057d318691aa9a44c629945fd62a8aebe970aea469e4a94196a800a98b",
+  "originHash" : "f364d26942b5269a6affbaa40a897070bdb78c3c80dabe23452f9b38cab56258",
   "pins" : [
     {
       "identity" : "dynamicnotchkit",
@@ -17,15 +17,6 @@
       "state" : {
         "branch" : "main",
         "revision" : "a04ec1c363be3627734f6dad757d82f5d4fa8fcc"
-      }
-    },
-    {
-      "identity" : "luminare-safe",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/asboy2035/Luminare-Safe",
-      "state" : {
-        "branch" : "main",
-        "revision" : "5224d7921361bd2b8c5edfbf867b2bf6e9c9a3da"
       }
     },
     {

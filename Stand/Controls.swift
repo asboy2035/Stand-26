@@ -6,21 +6,22 @@
 //
 
 import SwiftUI
-import Luminare
 
 struct ControlButtons: View {
-    @EnvironmentObject var timerManager: TimerManager
+    @ObservedObject var timerManager = TimerManager.shared
     @State var showTooltips: Bool = true
+    let standardRect = RoundedRectangle(cornerRadius: 16)
     
     var body: some View {
-        HStack(spacing: 16) {
+        HStack(spacing: 8) {
             Button(action: {
                 timerManager.resetTimer()
             }) {
                 Image(systemName: "arrow.clockwise")
-                    .frame(width: 10)
+                    .padding(.vertical, 6)
             }
-            .frame(width: 20, height: 20)
+            .clipShape(standardRect)
+            .glassEffect(.regular, in: standardRect)
             .keyboardShortcut("r", modifiers: [])
             .help(
                 showTooltips ?
@@ -36,8 +37,12 @@ struct ControlButtons: View {
                 }
             }) {
                 Image(systemName: timerManager.isRunning ? "pause.fill" : "play.fill")
+                    .scaleEffect(1.4)
+                    .padding(14)
+                    .padding(.horizontal, 2)
             }
-            .frame(width: 40, height: 40)
+            .clipShape(.capsule)
+            .glassEffect()
             .keyboardShortcut(.space, modifiers: [])
             .help(
                 showTooltips ?
@@ -49,9 +54,11 @@ struct ControlButtons: View {
                 timerManager.switchInterval()
             }) {
                 Image(systemName: "repeat")
-                    .frame(width: 10)
+                    .padding(.horizontal, -2)
+                    .padding(.vertical, 7)
             }
-            .frame(width: 20, height: 20)
+            .clipShape(standardRect)
+            .glassEffect(.regular, in: standardRect)
             .keyboardShortcut(.return, modifiers: [])
             .help(
                 showTooltips ?
@@ -59,7 +66,7 @@ struct ControlButtons: View {
                     ""
             )
         }
-        .frame(width: 110, height: 20)
-        .buttonStyle(LuminareCompactButtonStyle())
+        .imageScale(.large)
+        .buttonStyle(.borderedProminent)
     }
 }
