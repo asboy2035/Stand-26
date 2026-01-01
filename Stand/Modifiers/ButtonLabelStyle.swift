@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct ButtonLabelStyle: ViewModifier {
-    func body(content: Content) -> some View {
-        content
-            .padding(6)
-            .frame(maxWidth: .infinity)
-    }
+  func body(content: Content) -> some View {
+    content
+      .padding(6)
+      .frame(maxWidth: .infinity)
+  }
 }
