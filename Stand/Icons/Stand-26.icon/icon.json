@@ -1,18 +1,56 @@
 {
   "fill" : {
     "linear-gradient" : [
-      "srgb:0.92216,1.00000,0.64393,1.00000",
+      "extended-srgb:1.00000,0.80000,0.00000,1.00000",
       "srgb:0.45560,0.20874,1.00000,1.00000"
     ]
   },
   "groups" : [
     {
+      "blur-material" : 0.5,
+      "layers" : [
+        {
+          "image-name" : "SittingTransparent.svg",
+          "name" : "SittingTransparent",
+          "opacity" : 0.4,
+          "position" : {
+            "scale" : 0.35,
+            "translation-in-points" : [
+              0,
+              -265
+            ]
+          }
+        },
+        {
+          "image-name" : "gauge.with.needle.fill.svg",
+          "name" : "gauge.with.needle.fill"
+        }
+      ],
+      "opacity" : 0.8,
+      "position" : {
+        "scale" : 1,
+        "translation-in-points" : [
+          -275,
+          275
+        ]
+      },
+      "shadow" : {
+        "kind" : "neutral",
+        "opacity" : 0.5
+      },
+      "translucency" : {
+        "enabled" : true,
+        "value" : 0.8
+      }
+    },
+    {
+      "blur-material" : 0.2,
       "layers" : [
         {
           "image-name" : "StandTransparent.svg",
           "name" : "StandTransparent",
           "position" : {
-            "scale" : 0.65,
+            "scale" : 0.75,
             "translation-in-points" : [
               0,
               0
@@ -20,13 +58,20 @@
           }
         }
       ],
+      "position" : {
+        "scale" : 1,
+        "translation-in-points" : [
+          150,
+          0
+        ]
+      },
       "shadow" : {
         "kind" : "neutral",
         "opacity" : 0.5
       },
       "translucency" : {
         "enabled" : true,
-        "value" : 0.5
+        "value" : 0.9
       }
     }
   ],

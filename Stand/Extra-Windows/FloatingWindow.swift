@@ -9,6 +9,9 @@ import AppKit
 import SwiftUI
 
 class FloatingWindow: NSPanel {
+  override var canBecomeKey: Bool { false }
+  override var canBecomeMain: Bool { false }
+
   init(contentView: NSView) {
     super.init(
       contentRect: NSRect(x: 200, y: 250, width: 150, height: 150),
@@ -25,6 +28,12 @@ class FloatingWindow: NSPanel {
     self.contentView = contentView
     isReleasedWhenClosed = false
     title = "\(NSLocalizedString("appName", comment: "App name in widget title"))"
+    
+    styleMask.insert(.nonactivatingPanel)
+    becomesKeyOnlyIfNeeded = true
+    worksWhenModal = false
+    hidesOnDeactivate = false
+    isFloatingPanel = true
   }
 }
 
