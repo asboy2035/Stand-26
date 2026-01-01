@@ -1,6 +1,6 @@
 //
 //  TimerManager.swift
-//  SitStandTimer
+//  Stand
 //
 //  Recreated by ash on 1/4/25.
 //

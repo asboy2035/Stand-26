@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  SitStandTimer
+//  Stand
 //
 //  Created by ash on 12/10/24.
 //
@@ -23,9 +23,13 @@ struct ContentView: View {
         IdleModeView(currentTime: currentTime)
       } else {
         NavigationSplitView {
-          SidebarView()
+          GlassEffectContainer {
+            SidebarView()
+          }
         } detail: {
-          DetailView()
+          GlassEffectContainer {
+            DetailView()
+          }
         }
         .frame(minWidth: 750)
         .background(.ultraThickMaterial)

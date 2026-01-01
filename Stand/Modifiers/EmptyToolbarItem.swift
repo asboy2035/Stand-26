@@ -1,6 +1,6 @@
 //
 //  EmptyToolbarItem.swift
-//  SitStandTimer
+//  Stand
 //
 //  Created by ash on 1/1/26.
 //

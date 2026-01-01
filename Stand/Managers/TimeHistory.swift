@@ -1,6 +1,6 @@
 //
 //  TimeHistory.swift
-//  SitStandTimer
+//  Stand
 //
 //  Created by ash on 2/2/25.
 //

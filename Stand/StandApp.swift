@@ -1,8 +1,6 @@
 //
 //  StandApp.swift
-//  SitStandTimer
-//
-//  Converted to AppDelegate lifecycle by Кирушка
+//  Stand
 //
 
 import SwiftUI
@@ -61,33 +59,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   private func setupMainWindow() {
     let mainContent = GlassEffectContainer {
       ContentView()
-//            if fullScreenManager.isFullScreen {
-//                IdleModeView(currentTime: Date())
-//            } else {
-//                NavigationSplitView {
-//                    SidebarView()
-//                } detail: {
-//                    DetailView()
-//                }
-//                .frame(minWidth: 750)
-//                .background(.ultraThickMaterial)
-//            }
     }
-//        .onDisappear() {
-//            NSApplication.shared.terminate(nil)
-//        }
-//        .onReceive(
-//            NotificationCenter.default.publisher(for: NSWindow.willEnterFullScreenNotification)
-//        ) { _ in
-//            self.fullScreenManager.isFullScreen = true
-//        }
-//        .onReceive(
-//            NotificationCenter.default.publisher(for: NSWindow.willExitFullScreenNotification)
-//        ) { _ in
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-//                self.fullScreenManager.isFullScreen = false
-//            }
-//        }
 
     let mainWindow = NSWindow(
       contentRect: NSRect(x: 0, y: 0, width: 800, height: 600),

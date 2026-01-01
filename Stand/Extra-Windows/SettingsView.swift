@@ -1,6 +1,6 @@
 //
 //  SettingsView.swift
-//  SitStandTimer
+//  Stand
 //
 //  Created by ash on 2/8/25.
 //

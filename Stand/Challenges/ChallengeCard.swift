@@ -1,6 +1,6 @@
 //
 //  ChallengeCard.swift
-//  SitStandTimer
+//  Stand
 //
 //  Created by ash on 1/22/25.
 //

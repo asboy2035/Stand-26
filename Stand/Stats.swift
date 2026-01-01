@@ -1,6 +1,6 @@
 //
 //  Stats.swift
-//  SitStandTimer
+//  Stand
 //
 //  Created by ash on 3/22/25.
 //

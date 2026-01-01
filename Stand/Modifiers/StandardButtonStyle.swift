@@ -1,6 +1,6 @@
 //
 //  StandardButtonStyle.swift
-//  SitStandTimer
+//  Stand
 //
 //  Created by ash on 8/26/25.
 //

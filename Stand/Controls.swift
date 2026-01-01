@@ -1,6 +1,6 @@
 //
 //  Controls.swift
-//  SitStandTimer
+//  Stand
 //
 //  Created by ash on 2/17/25.
 //

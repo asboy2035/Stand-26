@@ -1,6 +1,6 @@
 //
 //  IdleModeView.swift
-//  SitStandTimer
+//  Stand
 //
 //  Created by ash on 1/18/25.
 //

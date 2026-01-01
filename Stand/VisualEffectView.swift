@@ -1,6 +1,6 @@
 //
 //  VisualEffectView.swift
-//  SitStandTimer
+//  Stand
 //
 //  Created by ash on 6/11/25.
 //

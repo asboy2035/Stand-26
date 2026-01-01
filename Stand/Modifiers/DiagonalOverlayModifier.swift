@@ -1,6 +1,6 @@
 //
 //  DiagonalOverlayModifier.swift
-//  SitStandTimer
+//  Stand
 //
 //  Created by ash on 8/27/25.
 //

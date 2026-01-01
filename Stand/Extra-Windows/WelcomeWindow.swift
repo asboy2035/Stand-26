@@ -1,6 +1,6 @@
 //
 //  WelcomeWindow.swift
-//  SitStandTimer
+//  Stand
 //
 //  Created by ash on 1/19/25.
 //

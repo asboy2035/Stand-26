@@ -1,6 +1,6 @@
 //
 //  RandomReminderManager.swift
-//  SitStandTimer
+//  Stand
 //
 //  Created by ash on 3/19/25.
 //

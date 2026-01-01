@@ -1,6 +1,6 @@
 //
 //  AdaptableNotificationType.swift
-//  SitStandTimer
+//  Stand
 //
 //  Created by ash on 3/3/25.
 //
