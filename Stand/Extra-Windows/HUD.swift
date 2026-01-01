@@ -73,7 +73,7 @@ class HUDController: NSObject {
 
 struct HUDView: View {
   let hud: HUD
-  @State private var isVisible: Bool = false // Track visibility
+  @State private var isVisible: Bool = false
 
   var body: some View {
     VStack {
@@ -101,7 +101,6 @@ struct HUDView: View {
       )
       .ignoresSafeArea()
     )
-    .overlay(RoundedRectangle(cornerRadius: 22).stroke(.tertiary, lineWidth: 1))
     .mask(RoundedRectangle(cornerRadius: 22))
     .opacity(isVisible ? 1 : 0)
     .onAppear {

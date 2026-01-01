@@ -29,7 +29,7 @@ class WelcomeWindowController: NSObject {
 
       let window = NSWindow(
         contentRect: NSRect(x: 0, y: 0, width: 400, height: 400),
-        styleMask: [.fullSizeContentView],
+        styleMask: [.fullSizeContentView, .closable, .miniaturizable, .titled],
         backing: .buffered,
         defer: false
       )
@@ -37,9 +37,9 @@ class WelcomeWindowController: NSObject {
       window.center()
       window.contentViewController = hostingController
       window.isReleasedWhenClosed = false
-      window.titlebarAppearsTransparent = true
       window.isMovableByWindowBackground = true
-      window.backgroundColor = .clear
+      window.toolbarStyle = .unifiedCompact
+      window.titlebarAppearsTransparent = true
 
       self.window = window
     }
@@ -192,11 +192,14 @@ struct WelcomeView: View {
     }
     .padding(20)
     .background(
-      VisualEffectView(material: .hudWindow, blendingMode: .behindWindow)
-        .ignoresSafeArea(.all)
+      VisualEffectView(
+        material: .menu,
+        blendingMode: .behindWindow
+      )
+      .ignoresSafeArea()
     )
     .frame(width: 400, height: 400)
-    .mask(RoundedRectangle(cornerRadius: 24))
+    .toolbar { EmptyToolbarItem() }
   }
 }
 

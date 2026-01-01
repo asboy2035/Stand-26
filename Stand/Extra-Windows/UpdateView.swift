@@ -68,14 +68,14 @@ struct UpdateView: View {
     .frame(width: 400, height: 400)
     .background(
       VisualEffectView(
-        material: .hudWindow,
+        material: .menu,
         blendingMode: .behindWindow
       ).ignoresSafeArea()
     )
     .onAppear {
       self.getUpdateData()
     }
-    .mask(RoundedRectangle(cornerRadius: 24))
+    .toolbar { EmptyToolbarItem() }
   }
 
   private func getUpdateData() {
@@ -121,7 +121,7 @@ class UpdateWindowController: NSObject {
 
       let window = NSWindow(
         contentRect: NSRect(x: 0, y: 0, width: 300, height: 300),
-        styleMask: [.fullSizeContentView],
+        styleMask: [.fullSizeContentView, .closable, .miniaturizable, .titled],
         backing: .buffered,
         defer: false
       )
@@ -129,8 +129,9 @@ class UpdateWindowController: NSObject {
       window.center()
       window.contentViewController = hostingController
       window.isReleasedWhenClosed = false
-      window.backgroundColor = .clear
       window.isMovableByWindowBackground = true
+      window.toolbarStyle = .unifiedCompact
+      window.titlebarAppearsTransparent = true
 
       self.window = window
     }
